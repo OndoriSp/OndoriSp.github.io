@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нотатка</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div>
+            <a href="index.html"><img class="logo" src="logo.png" alt="Logo"></a>
+        </div>
+        <nav>
+            <div class="logged-menu">
+                <a href="add_note.html"><button class="register-btn">Додати нотатку</button></a>
+            <div class="profile">
+                <img class="avatar" src="banner.jpg" alt="User Avatar">
+                <div class="menu">
+                  <ul>
+                    <li><a href="my_notes.html">Мої нотатки</a></li>
+                    <li><a href="edit_user.html">Редагувати профіль</a></li>
+                    <li><a href="error.html">Вийти</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="textblock">
+                <div class="add-note">
+                    <label for="notename">Назва нотатки:</label>
+                    <input type="text" id="notename" name="notename" placeholder="Моя нотатка">
+                    <label for="tags">Теги:</label>
+                    <input type="text" id="tags" name="tags" placeholder="#нотатка, #варіант2">
+                    <textarea id="userinfo" name="userinfo" placeholder="Текст нотатки..."></textarea>
+                    <a href="my_notes.html"><button>Зберегти</button></a>
+                </div>
+        </section>
+        <footer>
+            <p>© 2023 Сервіс коротких нотаток</p>
+        </footer>
+</body>
+
+</html>
