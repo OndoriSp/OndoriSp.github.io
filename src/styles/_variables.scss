@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+:root{
+    --font-style-open-sans: "Open Sans";
+    --font-style-roboto-condensed: "Roboto Condensed";
+    --font-style-roboto: "Roboto";
+
+    $bg_grey: #ebebeb;
+    $error_red: #e23e3e;
+    $error_hover_red: #990000;
+    $error_orange: #fd7d42;
+    $confirm_green: #0ec268;
+    $confirm_hover_green: #278a64;
+    $main_color: #ffae00;
+    $main_color_hover: #ad7702;
+}
+
+

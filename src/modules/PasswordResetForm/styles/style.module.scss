@@ -1,0 +1,17 @@
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 10%;
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    gap: 2rem;
+
+    .error{
+        color: var(--color-red-regular);
+        font-size: 18px;
+    }
+}
+}
