@@ -2,39 +2,40 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../../../routes/routes'
-import { ReactSVG } from 'react-svg'
+import { useParams } from 'react-router-dom';
 import styles from '../styles/style.module.scss'
 import { Button } from '@mui/material'
-import getUserRequest from '../helpers/getUserRequest'
-import deleteUserRequest from '../helpers/deleteUserRequest'
+import getNoteRequest from '../helpers/getNoteRequest'
+import deleteNoteRequest from '../helpers/deleteNoteRequest'
+import UserList from '../../UserList/components/UserList';
 
-function ProfileInfo() {
-    const [username, setUsername] = useState('')
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [notesCount, setNotesCount] = useState('')
+function NoteInfo() {
+    const { noteId } = useParams();
+    const [title, setTitle] = useState('')
+    const [tags, setTags] = useState([])
+    const [content, setContent] = useState('')
+    const [owners, setOwners] = useState([])
     const navigate = useNavigate()
 
-    const handleGetUser = async () => {
-        const result = await getUserRequest()
+    const handleGetNote = async () => {
+        const result = await getNoteRequest(noteId)
         if (result.status !== 200) {
             navigate(ROUTES.LOGIN)
         }
         console.log(result.data)
-        setUsername(result.data.user.username)
-        setFirstName(result.data.user.first_name)
-        setLastName(result.data.user.last_name)
-        setNotesCount(result.data.user.notes_count)
+        setTitle(result.data.title)
+        setTags(result.data.tags)
+        setContent(result.data.content)
     }
 
-    const handleDeleteUser = async (event) => {
+    const handleDeleteNote = async (event) => {
         event.preventDefault()
-        await deleteUserRequest()
-        navigate(ROUTES.HOME)
+        await deleteNoteRequest(noteId)
+        navigate(ROUTES.NOTELIST)
     }
 
     useEffect(() => {
-        handleGetUser()
+        handleGetNote()
     }, [])
 
     return (
@@ -42,12 +43,17 @@ function ProfileInfo() {
             <main>
                 <section className={styles.textblock}>
                     <div className={styles.row} id="user-info">
+                        <div className={styles.columnMain}>
+                            <h2>Назва: {title}</h2>
+                            <p>Теги: {tags}</p>
+                            <h3>Вміст</h3>
+                            <p>{content}</p>
+                        </div>
                         <div className={styles.column}>
-                            <ReactSVG className={styles.profilePic} src={process.env.PUBLIC_URL + "/icons/user.svg"} />
-                            <Button onClick={() => {navigate(ROUTES.PROFILEUPD)}}
+                            <Button onClick={() => { navigate(ROUTES.PROFILEUPD) }}
                                 sx={{
-                                    width: '250px',
-                                    marginTop: '2rem',
+                                    width: '100%',
+                                    marginBottom: '0.5rem',
                                     backgroundColor: "#FFF",
                                     textTransform: "none",
                                     border: "1px solid #D72230",
@@ -65,12 +71,12 @@ function ProfileInfo() {
                                         backgroundColor: '#C81E15',
                                     }
                                 }}>
-                                Змінити пароль
+                                Редагувати нотатку
                             </Button>
-                            <Button onClick={handleDeleteUser}
+                            <Button onClick={handleDeleteNote}
                                 sx={{
-                                    width: '250px',
-                                    marginTop: '0.5rem',
+                                    width: '100%',
+                                    marginBottom: '0.5rem',
                                     backgroundColor: "#D72230",
                                     textTransform: "none",
                                     border: "none",
@@ -86,14 +92,11 @@ function ProfileInfo() {
                                         backgroundColor: '#C81E15',
                                     }
                                 }}>
-                                Видалити користувача
+                                Видалити нотатку
                             </Button>
                         </div>
                         <div className={styles.column}>
-                            <h2>{username}</h2>
-                            <p>{firstName + " " + lastName}</p>
-                            <h3>Кількість нотаток</h3>
-                            <p>{notesCount}</p>
+                            <UserList />
                         </div>
                     </div>
                 </section>
@@ -102,4 +105,4 @@ function ProfileInfo() {
     )
 }
 
-export default ProfileInfo
+export default NoteInfo

@@ -9,6 +9,9 @@ import PasswordResetPage from './pages/PasswordReset/components/PasswordResetPag
 import UserListPage from './pages/UserList/components/UserListPage'
 
 import {ROUTES} from './routes/routes'
+import EditUserPage from './pages/EditUser';
+import NoteListPage from './pages/NoteList';
+import NoteInfoPage from './pages/NoteInfo';
 
 function App() {
   return (
@@ -18,8 +21,11 @@ function App() {
               <Route exact path={ROUTES.LOGIN} element={<LoginPage/>} />
               <Route exact path={ROUTES.REGISTER} element={<RegisterPage/>} />
               <Route exact path={ROUTES.PROFILE} element={<ProfilePage/>} />
+              <Route exact path={ROUTES.PROFILEUPD} element={<EditUserPage />} />
               <Route exact path={ROUTES.PASSWORDRESET} element={<PasswordResetPage/>} />
               <Route exact path={ROUTES.USERLIST} element={<UserListPage/>} />
+              <Route exact path={ROUTES.NOTELIST} element={<NoteListPage/>} />
+              <Route exact path={ROUTES.NOTEINFO} element={<NoteInfoPage/>} />
           </Routes>
       </BrowserRouter>
   )

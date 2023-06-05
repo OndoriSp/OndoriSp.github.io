@@ -5,7 +5,7 @@ import { ReactSVG } from 'react-svg';
 import styles from '../styles/style.module.scss';
 import getUsersRequest from '../helpers/getUsersRequest';
 
-function ProfileInfo() {
+function UserList() {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ function ProfileInfo() {
 
   useEffect(() => {
     handleGetUsers();
-  });
+  }, []);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value.toLowerCase());
@@ -35,12 +35,10 @@ function ProfileInfo() {
 
   return (
     <>
-      <main>
-        <section>
-          <div className={styles.list}>
-            <div className={styles.sortButtons}>
+          <div className={styles.searchContainer}>
               <input type="search" placeholder="Ім'я користувача..." onChange={handleSearch} />
             </div>
+          <div className={styles.list}>
             <ul>
               {filteredUsers.map((user) => (
                 <li key={user.username}>
@@ -56,10 +54,8 @@ function ProfileInfo() {
               ))}
             </ul>
           </div>
-        </section>
-      </main>
     </>
   );
 }
 
-export default ProfileInfo;
+export default UserList;

@@ -33,8 +33,8 @@ function Header() {
                                     <ReactSVG className={styles.avatar} src={process.env.PUBLIC_URL + "/icons/user.svg"} />
                                     <div className={styles.menu}>
                                         <ul>
-                                            <li onClick={() => navigate(ROUTES.HOME)}>Мої нотатки</li>
-                                            <li onClick={() => navigate(ROUTES.PROFILE)}>Редагувати профіль</li>
+                                            <li onClick={() => navigate(ROUTES.NOTELIST)}>Мої нотатки</li>
+                                            <li onClick={() => navigate(ROUTES.PROFILE)}>Мій профіль</li>
                                             <li onClick={handleLogout}>Вийти</li>
                                         </ul>
                                     </div>

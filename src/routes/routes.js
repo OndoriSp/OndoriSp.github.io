@@ -2,8 +2,10 @@ export const ROUTES = {
     LOGIN: "/login",
     REGISTER: "/register",
     PROFILE: "/profile",
+    PROFILEUPD: "/profile/edit",
     PASSWORDRESET: "/password/reset",
     USERLIST: "/users",
     HOME: "/",
-    ADMIN: "/admin"
+    NOTELIST: "/notes",
+    NOTEINFO: "/note/:noteId",
 }

@@ -1,19 +1,20 @@
 import styles from "../styles/style.module.scss"
 import Input from "../../../ui/Input"
 import Button from "../../../ui/Button"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
-import passwordResetRequest from "../helpers/passwordResetRequest"
+import passwordResetRequest from "../../PasswordResetForm/helpers/passwordResetRequest"
+import getUserRequest from "../../ProfileInfo/helpers/getUserRequest"
 import { ROUTES } from "../../../routes/routes"
-function PasswordResetForm() {
+
+function EditUserForm() {
     const [username, setUsername] = useState('')
     const [password1, setPassword1] = useState('')
     const [password2, setPassword2] = useState('')
-    const [formChange, setFormChange] = useState(false)
     const [error, setError] = useState(false)
     const navigate = useNavigate()
 
-    const handleSubmit = async (event) => {
+    const handleEdit = async (event) => {
         event.preventDefault()
         const result = await passwordResetRequest(username, password1, password2)
 
@@ -21,9 +22,22 @@ function PasswordResetForm() {
             setError(true)
         } else {
             setError(false)
-            navigate(ROUTES.LOGIN)
+            navigate(ROUTES.PROFILE)
         }
     }
+
+    const handleGetUser = async () => {
+        const result = await getUserRequest()
+        if (result.status !== 200) {
+            navigate(ROUTES.LOGIN)
+        }
+        console.log(result.data)
+        setUsername(result.data.user.username)
+    }
+
+    useEffect(() => {
+        handleGetUser()
+    }, [])
 
     return (
         <div className={styles.container}>
@@ -32,11 +46,7 @@ function PasswordResetForm() {
                     <h1>Зміна паролю</h1>
                     {error && <h3 className={styles.error}>Неправильно введені дані.</h3>}
                 </div>
-                {
-                    formChange
-                        ?
-                        <>
-                            <Input label={"Пароль"}
+                <Input label={"Новий пароль"}
                                 placeholder={"8+ символів (літери та цифри)"}
                                 error={error} isVisible={false}
                                 onChange={(event) => setPassword1(event.target.value)} />
@@ -44,21 +54,10 @@ function PasswordResetForm() {
                                 placeholder={"8+ символів (літери та цифри)"}
                                 error={error} isVisible={false}
                                 onChange={(event) => setPassword2(event.target.value)} />
-                            <Button onClick={handleSubmit} text={"Змінити пароль"} />
-                        </>
-                        :
-                        <>
-                            <Input label={"Ім'я користувача"}
-                                placeholder={"Ben001"}
-                                error={error}
-                                onChange={(event) => setUsername(event.target.value)}
-                            />
-                            <Button onClick={() => setFormChange(true)} text={"Продовжити"} />
-                        </>
-                }
+                            <Button onClick={handleEdit} text={"Змінити пароль"} />
             </div>
         </div>
     )
 }
 
-export default PasswordResetForm;
+export default EditUserForm;

@@ -13,14 +13,6 @@ const InputStyles = styled(InputBase)(({ theme }) => ({
         backgroundColor: "white",
         border: '1.5px solid #DCE0E6',
         padding: '10px 12px',
-        // color: '#DCE0E6',
-
-        transition: theme.transitions.create([
-            'border-color',
-            'background-color',
-            'box-shadow',
-            'color'
-        ]),
 
         '&:hover': {
             borderColor: "#EDEDED",
@@ -36,14 +28,6 @@ const InputStyles = styled(InputBase)(({ theme }) => ({
     '&.Mui-error .MuiInputBase-input': {
         borderColor: '#D72230',
     },
-
-    '&::placeholder': {
-        color: '#DCE0E6',
-    },
-    '&:not(:placeholder-shown)': {
-        color: 'black',
-    },
-
 }));
 
 export default InputStyles
