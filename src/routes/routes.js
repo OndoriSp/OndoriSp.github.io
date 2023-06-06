@@ -4,8 +4,9 @@ export const ROUTES = {
     PROFILE: "/profile",
     PROFILEUPD: "/profile/edit",
     PASSWORDRESET: "/password/reset",
-    USERLIST: "/users",
     HOME: "/",
     NOTELIST: "/notes",
     NOTEINFO: "/note/:noteId",
+    NOTEADD: "/note/add",
+    NOTEEDIT: "/note/edit/:noteId",
 }

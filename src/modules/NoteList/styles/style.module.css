@@ -1,0 +1,64 @@
+.list {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.list .sortButtons {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.list .sortButtons button {
+  margin-right: 20px;
+  font-size: 1rem;
+  padding: 1rem;
+}
+.list .sortButtons input[type=search] {
+  border: 1px solid #D72230;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100rem;
+  padding: 1rem;
+}
+.list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.list ul li {
+  border: none;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+.list ul li .userAvatar {
+  width: 5rem;
+  height: 5rem;
+  padding-left: 1rem;
+  margin-right: 2rem;
+  align-self: center;
+}
+.list ul li .userAvatar img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.list ul li .hoverInfo h3 {
+  margin-top: 0.5rem;
+  margin-left: 10px;
+}
+.list ul li .hoverInfo p {
+  margin: 5px 0;
+  margin-left: 10px;
+}
+.list ul li:hover {
+  background-color: #aaa;
+  cursor: pointer;
+}/*# sourceMappingURL=style.module.css.map */

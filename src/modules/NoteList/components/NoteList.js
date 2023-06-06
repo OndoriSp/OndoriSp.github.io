@@ -4,7 +4,6 @@ import { ROUTES } from '../../../routes/routes';
 import styles from '../styles/style.module.scss';
 import getNotesRequest from '../helpers/getNotesRequest';
 import Chip from '@mui/material/Chip';
-//import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Input from '../../../ui/Input/components/Input';
 import TextField from '../../../ui/TextField/components/TextField';
@@ -97,7 +96,7 @@ function NoteList() {
             <ul>
               {filteredNotes.map((note) => (
                 <li key={note.id}
-                onClick={() => navigate(`${ROUTES.NOTEINFO.replace(':noteId', note.id)}`)}>
+                onClick={() => navigate(ROUTES.NOTEINFO.replace(':noteId', note.id))}>
                   <div className={styles.hoverInfo}>
                     <h3>Назва: {note.title}</h3>
                     <p>Теги: {note.tags}</p>

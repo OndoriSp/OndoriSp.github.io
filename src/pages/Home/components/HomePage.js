@@ -2,8 +2,12 @@ import React from "react"
 import Header from "../../../modules/Header/components/Header"
 import styles from "../styles/style.module.scss"
 import Button from "../../../ui/Button"
+import { useNavigate } from 'react-router-dom'
+import { ROUTES } from '../../../routes/routes'
 
 function HomePage() {
+    const navigate = useNavigate()
+    const userId = parseInt(sessionStorage.getItem('userId'))
     return (
         <>
             <Header />
@@ -13,7 +17,7 @@ function HomePage() {
                     <div className={styles.bannerText}>
                         <h1>Сервіс коротких нотаток</h1>
                         <p>Варіант 2</p>
-                        <Button text={"Зробити нотатку"}/>
+                        <Button onClick={() => (userId ? navigate(ROUTES.NOTEADD) : navigate(ROUTES.LOGIN))} text={"Зробити нотатку"}/>
                     </div>
                 </section>
                 <section>

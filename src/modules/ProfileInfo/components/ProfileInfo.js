@@ -7,6 +7,7 @@ import styles from '../styles/style.module.scss'
 import { Button } from '@mui/material'
 import getUserRequest from '../helpers/getUserRequest'
 import deleteUserRequest from '../helpers/deleteUserRequest'
+import PopUpRemovalWarning from '../../PopUpRemovalWarning'
 
 function ProfileInfo() {
     const [username, setUsername] = useState('')
@@ -14,6 +15,12 @@ function ProfileInfo() {
     const [lastName, setLastName] = useState('')
     const [notesCount, setNotesCount] = useState('')
     const navigate = useNavigate()
+
+    const [openPopUpRemovalWarning, setOpenPopUpRemovalWarning] = useState(false)
+
+    const handleClosePopUpRemovalWarning = () => {
+        setOpenPopUpRemovalWarning(false)
+    }
 
     const handleGetUser = async () => {
         const result = await getUserRequest()
@@ -29,8 +36,13 @@ function ProfileInfo() {
 
     const handleDeleteUser = async (event) => {
         event.preventDefault()
-        await deleteUserRequest()
-        navigate(ROUTES.HOME)
+        const result = await deleteUserRequest()
+        if (result.status !== 200) {
+            navigate(ROUTES.PROFILE)
+            return
+        }
+        setOpenPopUpRemovalWarning(false)
+            navigate(ROUTES.HOME)
     }
 
     useEffect(() => {
@@ -67,7 +79,7 @@ function ProfileInfo() {
                                 }}>
                                 Змінити пароль
                             </Button>
-                            <Button onClick={handleDeleteUser}
+                            <Button onClick={() => setOpenPopUpRemovalWarning(true)}
                                 sx={{
                                     width: '250px',
                                     marginTop: '0.5rem',
@@ -97,6 +109,11 @@ function ProfileInfo() {
                         </div>
                     </div>
                 </section>
+                <PopUpRemovalWarning open={openPopUpRemovalWarning}
+                    title={'Видалення користувача'}
+                    content={'Ви дійсно бажаєте видалити свого користувача?'}
+                    handleDelete={handleDeleteUser}
+                    handleClose={handleClosePopUpRemovalWarning} />
             </main>
         </>
     )

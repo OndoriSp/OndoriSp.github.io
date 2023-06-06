@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2.5%;
+}
+.container .two_col_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 4vw;
+}
+.container .form {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  gap: 1rem;
+}
+.container .form .error {
+  color: var(--color-red-regular);
+  font-size: 18px;
+}/*# sourceMappingURL=style.module.css.map */

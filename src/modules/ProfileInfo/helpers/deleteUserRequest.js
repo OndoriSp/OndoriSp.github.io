@@ -13,6 +13,7 @@ const deleteUserRequest = async () => {
 
         console.log(response.data)
         sessionStorage.removeItem('Authorization')
+        sessionStorage.removeItem('userId')
         return response
     } catch (error) {
         console.error(error)

@@ -4,7 +4,7 @@ import InputStyles from "../styles/InputStyles"
 import Label from "./Label"
 
 
-function Input({placeholder, label, onClick, isVisible=true, onChange, ...props}){
+function Input({placeholder, value, label, onClick, isVisible=true, onChange, ...props}){
 
     return(
         <FormControl variant="standard" className={styles.form__control} {...props}>
@@ -15,6 +15,7 @@ function Input({placeholder, label, onClick, isVisible=true, onChange, ...props}
             )}
             <Label>{label}</Label>
             <InputStyles
+                value={value}
                 placeholder={placeholder}
                 onChange={onChange}
                 type= {isVisible ? "text" : "password"}/>

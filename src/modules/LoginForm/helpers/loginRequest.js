@@ -16,6 +16,7 @@ const loginRequest = async (username, password) => {
 
         console.log(response.data)
         sessionStorage.setItem('Authorization', `Bearer ${response.data.token}`)
+        sessionStorage.setItem('userId', `${response.data.userId}`)
         return response
     } catch (error) {
         console.error(error)

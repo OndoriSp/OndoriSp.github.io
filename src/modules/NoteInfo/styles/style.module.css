@@ -1,0 +1,33 @@
+.textblock {
+  background-color: white;
+  font-size: 1.25rem;
+  padding-top: 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+}
+.textblock h1 {
+  font-size: 2.5rem;
+}
+.textblock .row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.textblock .columnMain {
+  width: 40%;
+  box-sizing: border-box;
+  position: relative;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+.textblock .column {
+  width: 30%;
+  box-sizing: border-box;
+  position: relative;
+  padding-left: 1rem;
+  padding-right: 3rem;
+}/*# sourceMappingURL=style.module.css.map */

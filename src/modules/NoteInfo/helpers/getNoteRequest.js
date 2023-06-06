@@ -1,7 +1,6 @@
 import axios from "axios"
 
 const getNoteRequest = async (noteId) => {
-    console.log(`http://localhost:5000/api/note/${noteId}`)
     try {
         const response = await axios.get(`http://localhost:5000/api/note/${noteId}`, 
         {

@@ -12,6 +12,7 @@ function Header() {
     const handleLogout = async (event) => {
         event.preventDefault()
         sessionStorage.removeItem("Authorization")
+        sessionStorage.removeItem("userId")
         navigate(ROUTES.HOME)
     }
     return (
@@ -28,7 +29,7 @@ function Header() {
                         token
                             ?
                             <div className={styles.loggedMenu}>
-                                <Button isOutlined={false} text={"Додати нотатку"} onClick={() => navigate(ROUTES.HOME)} />
+                                <Button isOutlined={false} text={"Додати нотатку"} onClick={() => navigate(ROUTES.NOTEADD)} />
                                 <div className={styles.profile}>
                                     <ReactSVG className={styles.avatar} src={process.env.PUBLIC_URL + "/icons/user.svg"} />
                                     <div className={styles.menu}>
