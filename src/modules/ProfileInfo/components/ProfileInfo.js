@@ -42,7 +42,7 @@ function ProfileInfo() {
             return
         }
         setOpenPopUpRemovalWarning(false)
-            navigate(ROUTES.HOME)
+        navigate(ROUTES.HOME)
     }
 
     useEffect(() => {
@@ -56,7 +56,7 @@ function ProfileInfo() {
                     <div className={styles.row} id="user-info">
                         <div className={styles.column}>
                             <ReactSVG className={styles.profilePic} src={process.env.PUBLIC_URL + "/icons/user.svg"} />
-                            <Button onClick={() => {navigate(ROUTES.PROFILEUPD)}}
+                            <Button onClick={() => { navigate(ROUTES.PROFILEUPD) }}
                                 sx={{
                                     width: '250px',
                                     marginTop: '2rem',

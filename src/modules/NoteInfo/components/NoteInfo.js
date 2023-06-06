@@ -97,33 +97,33 @@ function NoteInfo() {
                             <h3>Вміст</h3>
                             <p>{content}</p>
                         </div>
-                        {userId === creatorId
-                            ?
-                            <>
-                                <div className={styles.column}>
-                                    <Button onClick={() => { navigate(ROUTES.NOTEEDIT.replace(':noteId', noteId)) }}
-                                        sx={{
-                                            width: '100%',
-                                            marginBottom: '0.5rem',
-                                            backgroundColor: "#FFF",
-                                            textTransform: "none",
-                                            border: "1px solid #D72230",
-                                            borderRadius: "5",
-                                            color: '#D72230',
-                                            height: "3rem",
-                                            fontSize: "1rem",
-                                            '&:hover': {
-                                                backgroundColor: '#E02431',
-                                                border: "1px solid #E02431",
-                                                color: '#FFF',
-                                            },
-                                            '&:active': {
-                                                border: "1px solid #C81E15",
-                                                backgroundColor: '#C81E15',
-                                            }
-                                        }}>
-                                        Редагувати нотатку
-                                    </Button>
+                        <div className={styles.column}>
+                            <Button onClick={() => { navigate(ROUTES.NOTEEDIT.replace(':noteId', noteId)) }}
+                                sx={{
+                                    width: '100%',
+                                    marginBottom: '0.5rem',
+                                    backgroundColor: "#FFF",
+                                    textTransform: "none",
+                                    border: "1px solid #D72230",
+                                    borderRadius: "5",
+                                    color: '#D72230',
+                                    height: "3rem",
+                                    fontSize: "1rem",
+                                    '&:hover': {
+                                        backgroundColor: '#E02431',
+                                        border: "1px solid #E02431",
+                                        color: '#FFF',
+                                    },
+                                    '&:active': {
+                                        border: "1px solid #C81E15",
+                                        backgroundColor: '#C81E15',
+                                    }
+                                }}>
+                                Редагувати нотатку
+                            </Button>
+                            {userId === creatorId
+                                ?
+                                <>
                                     <Button onClick={() => setOpenPopUpRemovalWarning(true)}
                                         sx={{
                                             width: '100%',
@@ -145,13 +145,20 @@ function NoteInfo() {
                                         }}>
                                         Видалити нотатку
                                     </Button>
-                                </div>
+                                </>
+                                :
+                                <></>
+                            }
+                        </div>
+                        {userId === creatorId
+                            ?
+                            <>
                                 <div className={styles.column}>
-                                    <UserList 
-                                    owners={owners}
-                                    creatorId={creatorId}
-                                    handleAddOwner={handleAddOwner}
-                                    handleDeleteOwner={handleDeleteOwner} />
+                                    <UserList
+                                        owners={owners}
+                                        creatorId={creatorId}
+                                        handleAddOwner={handleAddOwner}
+                                        handleDeleteOwner={handleDeleteOwner} />
                                 </div>
                             </>
                             :
@@ -160,8 +167,8 @@ function NoteInfo() {
                     </div>
                 </section>
                 <PopUpRemovalWarning open={openPopUpRemovalWarning}
-                title={'Видалення нотатки'}
-                content={'Ви дійсно бажаєте видалити свою нотатку?'}
+                    title={'Видалення нотатки'}
+                    content={'Ви дійсно бажаєте видалити свою нотатку?'}
                     handleDelete={handleDeleteNote}
                     handleClose={handleClosePopUpRemovalWarning} />
             </main>
