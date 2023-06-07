@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const registerRequest = async (email, username, password1, password2, firstName, lastName) => {
-    if (password1 !== password2) {
+    if (password1 !== password2 || password1.length < 8) {
         const response = {status: 406}
         return response
     }
